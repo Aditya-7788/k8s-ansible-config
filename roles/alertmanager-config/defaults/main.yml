@@ -1,0 +1,6 @@
+---
+alertmanager_config_dir: /etc/alertmanager
+alertmanager_slack_webhook_url: REPLACE_ME
+alertmanager_slack_channel: "#alerts"
+alertmanager_resolve_timeout: 5m
+prometheus_config_dir: /etc/prometheus

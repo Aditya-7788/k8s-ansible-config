@@ -1,0 +1,7 @@
+{% for host in groups.get('kubernetes_nodes', []) %}
+{% if loop.first %}- targets:
+{% endif %}
+    - {{ ((hostvars[host].ansible_host | default(host)) ~ ':' ~ (node_exporter_port | string)) | to_json }}
+{% else %}
+- targets: []
+{% endfor %}

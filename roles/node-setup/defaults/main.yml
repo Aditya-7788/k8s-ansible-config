@@ -1,0 +1,19 @@
+---
+node_setup_ssh_dropin: /etc/ssh/sshd_config.d/60-ansible-hardening.conf
+node_setup_ufw_allowed_tcp_ports:
+  - 22
+  - 6443
+  - 10250
+  - 9100
+node_setup_kernel_parameters:
+  - name: net.ipv4.ip_forward
+    value: "1"
+  - name: net.bridge.bridge-nf-call-iptables
+    value: "1"
+  - name: net.bridge.bridge-nf-call-ip6tables
+    value: "1"
+node_setup_packages:
+  - containerd
+  - unattended-upgrades
+  - ufw
+  - openssh-server

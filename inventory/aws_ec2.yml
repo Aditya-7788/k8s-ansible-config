@@ -1,0 +1,19 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-east-1
+filters:
+  instance-state-name: running
+  tag:Environment: capstone
+hostnames:
+  - private-ip-address
+compose:
+  ansible_host: private_ip_address
+  ansible_user: "'ubuntu'"
+keyed_groups:
+  - key: tags.Role
+    prefix: role
+  - key: tags.Environment
+    prefix: environment
+groups:
+  kubernetes_nodes: tags.Role == 'kubernetes-node'
+  monitoring_servers: tags.Role == 'monitoring'

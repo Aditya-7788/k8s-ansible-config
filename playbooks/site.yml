@@ -1,0 +1,14 @@
+---
+- name: Harden and prepare Kubernetes nodes
+  hosts: kubernetes_nodes
+  become: true
+  roles:
+    - node-setup
+    - node-exporter
+
+- name: Render monitoring service configuration
+  hosts: monitoring_servers
+  become: true
+  roles:
+    - prometheus-config
+    - alertmanager-config
