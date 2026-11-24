@@ -1,5 +1,5 @@
 ---
-node_setup_ssh_dropin: /etc/ssh/sshd_config.d/60-ansible-hardening.conf
+node_setup_ssh_dropin: /etc/ssh/sshd_config.d/01-ansible-hardening.conf
 node_setup_ufw_allowed_tcp_ports:
   - 22
   - 6443
